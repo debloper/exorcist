@@ -1,0 +1,27 @@
+{
+  "name": "exorcist",
+  "version": "0.0.1",
+  "description": "Got rogue daemons in your system?",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^7.1.4"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:debloper/exorcist.git"
+  },
+  "keywords": [
+    "linux",
+    "startup",
+    "daemon",
+    "services",
+    "systemd",
+    "optimize"
+  ],
+  "author": "Soumya Deb <debloper@gmail.com>",
+  "license": "MIT"
+}
