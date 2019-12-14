@@ -1,7 +1,10 @@
 // Application entrypoint
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow } = require('electron')
+const exec = require('child_process').exec
+
 const config = require('../config/window.json')
+const parse = require('./utils/parse')
 
 // Global reference of the window object
 let window;
@@ -14,9 +17,10 @@ const createWindow = () => {
   // window.webContents.openDevTools()
 
   window.webContents.on('did-finish-load', () => {
-    window.webContents.send('loaded', {
-      appName: 'exorcist',
-      electronVersion: process.versions.electron
+    exec('systemd-analyze blame', (e, out, err) => {
+      let payload
+      if (out) payload = parse(out)
+      window.webContents.send('loaded', payload)
     })
   })
 
