@@ -10,6 +10,9 @@ const { ipcRenderer } = window.require('electron')
 
 module.exports = {
   name: 'app',
+  created: () => {
+    document.title = "exorcist"
+  },
   mounted: () => {
       ipcRenderer.on('loaded', (event, data) => {
       document.getElementById('details').innerHTML = JSON.stringify(data, '  ', null)

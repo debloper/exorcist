@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "electron .",
+    "local": "npm run build && npm start",
     "build": "vue-cli-service build ./src/app",
     "serve": "vue-cli-service serve ./src/app"
   },
