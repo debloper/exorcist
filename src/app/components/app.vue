@@ -6,14 +6,15 @@
 </template>
 
 <script>
-// const { ipcRenderer } = require('electron')
-
-// ipcRenderer.on('loaded', (event, data) => {
-//   document.getElementById('details').innerHTML = JSON.stringify(data, '  ', null)
-// })
+const { ipcRenderer } = window.require('electron')
 
 module.exports = {
-  name: 'app'
+  name: 'app',
+  mounted: () => {
+      ipcRenderer.on('loaded', (event, data) => {
+      document.getElementById('details').innerHTML = JSON.stringify(data, '  ', null)
+    })
+  }
 }
 </script>
 
