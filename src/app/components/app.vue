@@ -1,21 +1,33 @@
 <template>
   <div id="app">
-    <h1 id="title">Exorcist</h1>
-    <pre id="details">loading...</pre>
+    <app-header />
+    <app-daemons :payload="daemons" />
   </div>
 </template>
 
 <script>
+// The reason for window.require hack:
+// https://github.com/electron/electron/issues/7300#issuecomment-274269710
 const { ipcRenderer } = window.require('electron')
 
-module.exports = {
-  name: 'app',
-  created: () => {
-    document.title = "exorcist"
+import AppHeader from './header.vue'
+import AppDaemons from './daemons.vue'
+
+export default {
+  components: {
+    AppHeader,
+    AppDaemons
   },
-  mounted: () => {
-      ipcRenderer.on('loaded', (event, data) => {
-      document.getElementById('details').innerHTML = JSON.stringify(data, '  ', null)
+  data () {
+    return { daemons: [] }
+  },
+  created () {
+    // HAX(
+    document.title = "exorcist"
+
+    let self = this
+    ipcRenderer.on('loaded', (event, data) => {
+      self.daemons = data
     })
   }
 }

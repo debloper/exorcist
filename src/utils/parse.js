@@ -4,7 +4,8 @@ function parse (data) {
     let item = line.trim().split(' ')
     let object = {}
 
-    object[item[1]] = item[0]
+    object.duration = item[0]
+    object.daemon = item[1]
     return object
   })
 
