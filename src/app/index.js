@@ -1,6 +1,6 @@
+import Vue from 'vue'
+import app from './components/app.vue'
 
-const { ipcRenderer } = require('electron')
-
-ipcRenderer.on('loaded', (event, data) => {
-  document.getElementById('details').innerHTML = JSON.stringify(data, '  ', null)
-})
+new Vue({
+  render: v => v(app)
+}).$mount('#app')

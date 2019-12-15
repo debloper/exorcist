@@ -4,15 +4,40 @@
   "description": "Got rogue daemons in your system?",
   "main": "src/index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "vue-cli-service build ./src/app",
+    "serve": "vue-cli-service serve ./src/app"
   },
   "dependencies": {
-    "electron": "^7.1.4"
+    "electron": "^7.1.4",
+    "vue": "^2.6.11"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/preset-stage-2": "7.0.0-beta.44",
+    "@vue/cli-plugin-babel": "^3.0.0-beta.6",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.6",
+    "@vue/cli-service": "^3.0.0-beta.6",
+    "vue-template-compiler": "^2.5.13"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:debloper/exorcist.git"
+  },
+  "vue": {
+    "publicPath": "",
+    "outputDir": "src/dist"
+  },
+  "babel": {
+    "presets": [
+      "@vue/app"
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ]
   },
   "keywords": [
     "linux",

@@ -12,6 +12,7 @@ pids
 .tmp/
 dist/
 builds/
+src/dist/
 
 # Deps
 node_modules/

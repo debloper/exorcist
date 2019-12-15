@@ -12,9 +12,7 @@ let window;
 const createWindow = () => {
   window = new BrowserWindow(config);
 
-  window.loadFile(`${__dirname}/app/index.html`);
-
-  // window.webContents.openDevTools()
+  window.loadFile(`${__dirname}/dist/index.html`);
 
   window.webContents.on('did-finish-load', () => {
     exec('systemd-analyze blame', (e, out, err) => {
