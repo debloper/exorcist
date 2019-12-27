@@ -4,20 +4,20 @@ const { app, BrowserWindow } = require('electron')
 const exec = require('child_process').exec
 
 const config = require('../config/window.json')
-const parse = require('./utils/parse')
+const parseDaemons = require('./utils/parseDaemons')
 
 // Global reference of the window object
 let window;
 
 const createWindow = () => {
-  window = new BrowserWindow(config);
+  window = new BrowserWindow(config)
 
-  window.loadFile(`${__dirname}/dist/index.html`);
+  window.loadFile(`${__dirname}/dist/index.html`)
 
   window.webContents.on('did-finish-load', () => {
     exec('systemd-analyze blame', (e, out, err) => {
       let payload
-      if (out) payload = parse(out)
+      if (out) payload = parseDaemons(out)
       window.webContents.send('loaded', payload)
     })
   })
@@ -29,7 +29,7 @@ const createWindow = () => {
 };
 
 // Electron has finished initialization
-app.on('ready', createWindow);
+app.on('ready', createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
