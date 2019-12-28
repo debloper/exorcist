@@ -12,7 +12,7 @@
           {{ props.row.description }}
         </b-table-column>
         <b-table-column field="action" label="Action">
-          <button class="button is-small">disable</button>
+          <button class="button is-light is-small">disable</button>
         </b-table-column>
       </template>
     </b-table>

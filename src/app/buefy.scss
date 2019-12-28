@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+// Import bulma utility functions for customizations
+@import "~bulma/sass/utilities/functions";
+
+// See, making dark theme is ez...
+// Just tell bulma, black is white, and white is black
+
+$white:        #303336;
+$white-bis:    lighten($white, 10%);
+$white-ter:    lighten($white, 20%);
+
+$grey-lightest:lighten($white, 30%);
+$grey-lighter: lighten($white, 38%);
+$grey-light:   lighten($white, 46%);
+$grey:         lighten($white, 54%);
+$grey-dark:    lighten($white, 62%);
+$grey-darker:  lighten($white, 70%);
+
+$black-ter:    lighten($white, 80%);
+$black-bis:    lighten($white, 90%);
+$black:        lighten($white, 100%);
+
+$table-cell-border: none;
+
+// Load up bulma & buefy
+@import '~bulma';
+@import '~buefy/src/scss/buefy';

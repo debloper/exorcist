@@ -1,8 +1,9 @@
 {
-  "width": 1024,
-  "height": 640,
-  "autoHideMenuBar": true,
+  "width": 800,
+  "height": 480,
+  "show": false,
   "darkTheme": true,
+  "autoHideMenuBar": true,
   "webPreferences": {
     "nodeIntegration": true
   }

@@ -22,6 +22,11 @@ const createWindow = () => {
     })
   })
 
+  // Avoids flash of white background
+  window.on('ready-to-show', () => {
+    window.show()
+  })
+
   // Reset the window object when closed
   window.on('closed', () => {
     window = null;
