@@ -1,7 +1,21 @@
 <template>
-  <div id="app">
-    <app-header />
-    <app-daemons :payload="daemons" />
+  <div>
+    <b-table :data="daemons" :columns="columns">
+      <template slot-scope="props">
+        <b-table-column field="duration" label="Duration" numeric>
+          {{ props.row.duration }}
+        </b-table-column>
+        <b-table-column field="daemon" label="Daemon">
+          {{ props.row.daemon }}
+        </b-table-column>
+        <b-table-column field="description" label="Description">
+          {{ props.row.description }}
+        </b-table-column>
+        <b-table-column field="action" label="Dispel">
+          <button class="button is-light is-small">disable</button>
+        </b-table-column>
+      </template>
+    </b-table>
   </div>
 </template>
 
@@ -10,21 +24,11 @@
 // https://github.com/electron/electron/issues/7300#issuecomment-274269710
 const { ipcRenderer } = window.require('electron')
 
-import AppHeader from './header.vue'
-import AppDaemons from './daemons.vue'
-
 export default {
-  components: {
-    AppHeader,
-    AppDaemons
-  },
   data () {
     return { daemons: [] }
   },
   created () {
-    // HAX(
-    document.title = "exorcist"
-
     let self = this
     ipcRenderer.on('loaded', (event, data) => {
       self.daemons = data

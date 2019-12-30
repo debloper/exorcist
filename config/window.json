@@ -2,6 +2,7 @@
   "width": 800,
   "height": 480,
   "show": false,
+  "frame": false,
   "darkTheme": true,
   "autoHideMenuBar": true,
   "webPreferences": {
