@@ -3,7 +3,7 @@
 const { app, BrowserWindow } = require('electron')
 const exec = require('child_process').exec
 
-const config = require('../config/window.json')
+const config = require('./config.json')
 const parseDaemons = require('./utils/parseDaemons')
 
 // Global reference of the window object

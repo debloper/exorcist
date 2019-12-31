@@ -1,8 +1,10 @@
 const fetchDescription = require('./fetchDescription')
-const knownDaemons = require('../data/daemons.json')
+const knownDaemons = require('../daemons.json')
 
 function parseDaemons (data) {
   let lines = data.split('\n')
+  if (lines[lines.length - 1] === '') lines.pop()
+
   let daemons = lines.map(line => {
     let item = line.trim().split(' ')
     let object = {}

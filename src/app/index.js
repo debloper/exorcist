@@ -12,7 +12,7 @@ const { Titlebar, Color } = window.require('custom-electron-titlebar')
 
 new Titlebar({
   menu: false,
-  icon: "../../build/icons/icon.png",
+  icon: "./img/icon.png",
   backgroundColor: Color.fromHex('#222')
 })
 

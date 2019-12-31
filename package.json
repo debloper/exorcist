@@ -1,13 +1,20 @@
 {
   "name": "exorcist",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Got rogue daemons in your system?",
   "main": "src/index.js",
   "scripts": {
     "start": "electron .",
-    "local": "npm run build && npm start",
-    "build": "vue-cli-service build ./src/app",
-    "serve": "vue-cli-service serve ./src/app"
+    "compile": "vue-cli-service build ./src/app",
+    "serve": "npm run compile && npm start",
+    "clean": "rm -rf dist node_modules src/dist",
+    "prebuild": "npm run compile",
+    "build": "electron-builder build src/dist/",
+    "postcompile": "npm run fetchIcon",
+    "fetchIcon": "mkdir -p ./src/dist/img && cp build/icons/512x512.png src/dist/img/icon.png"
+  },
+  "dependencies": {
+    "custom-electron-titlebar": "^3.2.0"
   },
   "devDependencies": {
     "@babel/preset-stage-2": "7.0.0-beta.44",
@@ -15,7 +22,6 @@
     "@vue/cli-plugin-eslint": "^3.0.0-beta.6",
     "@vue/cli-service": "^3.0.0-beta.6",
     "buefy": "^0.8.8",
-    "custom-electron-titlebar": "^3.2.0",
     "electron": "^7.1.4",
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",
@@ -42,6 +48,18 @@
       "eslint:recommended"
     ]
   },
+  "build": {
+    "appId": "io.debs.code.exorcist",
+    "compression": "store",
+    "files": [
+      "src/**/*",
+      "!src/app",
+      "build/icons/512x512.png"
+    ],
+    "linux": {
+      "target": "AppImage"
+    }
+  },
   "keywords": [
     "linux",
     "startup",
@@ -50,6 +68,6 @@
     "systemd",
     "optimize"
   ],
-  "author": "Soumya Deb <debloper@gmail.com>",
+  "author": "Soumya Deb <debloper@gmail.com> (https://debs.io)",
   "license": "MIT"
 }
