@@ -1,6 +1,6 @@
 {
   "name": "exorcist",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Got rogue daemons in your system?",
   "main": "src/index.js",
   "scripts": {
@@ -50,7 +50,6 @@
   },
   "build": {
     "appId": "io.debs.code.exorcist",
-    "compression": "store",
     "files": [
       "src/**/*",
       "!src/app",

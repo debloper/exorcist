@@ -1,6 +1,6 @@
 // Application entrypoint
 
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const exec = require('child_process').exec
 
 const config = require('./config.json')
@@ -19,6 +19,12 @@ const createWindow = () => {
       let payload
       if (out) payload = parseDaemons(out)
       window.webContents.send('loaded', payload)
+    })
+  })
+
+  ipcMain.on('action', (event, arg) => {
+    exec('systemctl disable ' + arg, (e, out, err) => {
+      if(!e) window.webContents.send('dispelled', arg)
     })
   })
 

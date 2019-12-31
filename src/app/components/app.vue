@@ -12,7 +12,12 @@
           {{ props.row.description }}
         </b-table-column>
         <b-table-column field="action" label="Dispel">
-          <button class="button is-light is-small">disable</button>
+          <button
+            @click.stop="dispel"
+            :data-daemon="props.row.daemon"
+            class="button is-light is-small">
+            disable
+          </button>
         </b-table-column>
       </template>
     </b-table>
@@ -28,10 +33,21 @@ export default {
   data () {
     return { daemons: [] }
   },
+  methods: {
+    dispel: (event) => {
+      let message = event.target.dataset.daemon
+      ipcRenderer.send('action', message)
+    }
+  },
   created () {
     let self = this
     ipcRenderer.on('loaded', (event, data) => {
       self.daemons = data
+
+      ipcRenderer.on('dispelled', (e, d) => {
+        let button = '[data-daemon="' + d + '"]'
+        document.querySelector(button).disabled = true
+      })
     })
   }
 }
