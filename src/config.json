@@ -1,7 +1,7 @@
 {
   "width": 800,
   "height": 480,
-  "icon": "./src/dist/img/icon.png",
+  "icon": "./src/dist/img/icon.svg",
   "show": false,
   "frame": false,
   "darkTheme": true,

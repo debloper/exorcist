@@ -11,7 +11,7 @@
     "prebuild": "npm run compile",
     "build": "electron-builder build src/dist/",
     "postcompile": "npm run fetchIcon",
-    "fetchIcon": "mkdir -p ./src/dist/img && cp build/icons/512x512.png src/dist/img/icon.png"
+    "fetchIcon": "mkdir -p ./src/dist/img && cp build/icon.svg src/dist/img/icon.svg"
   },
   "dependencies": {
     "custom-electron-titlebar": "^3.2.0"
@@ -53,9 +53,10 @@
     "files": [
       "src/**/*",
       "!src/app",
-      "build/icons/512x512.png"
+      "build/**/*"
     ],
     "linux": {
+      "icon": "icon.svg",
       "target": "AppImage"
     }
   },
